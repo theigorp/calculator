@@ -39,40 +39,29 @@ const operations = document.querySelector('.operations');
 const equals = document.querySelector('#equals');
 const clear = document.querySelector('#clear');
 const deleteDigit = document.querySelector('#delete');
+const comma = document.querySelector('#comma');
 
 let displayValue1 = '';//stores current displayValue later used for calculating
 let displayValue2 = '';
 let operatorChosen;
 let operationsCount = 0;
 let switchValue = false;
-let clicked = false;
 
 digits.addEventListener('click', e => {
     if(e.target.value == undefined) return;
     else
     {
-        let commaCount = 0;
         if(switchValue==true)
         {
+            comma.addEventListener('click', () => comma.setAttribute('disabled', 'true'));
             displayValue2 += e.target.textContent;
             displayScreen.textContent = displayValue2;
         }
         else 
         {
-            if(commaCount == 1)
-            {
-                displayValue1 += e.target.textContent;
-                displayScreen.textContent = displayValue1;
-            }
-            else if(commaCount >=2)
-            {
-                displayScreen.textContent = 'error';
-            }
-            else 
-            {
-                displayValue1 += e.target.textContent;
-                displayScreen.textContent = displayValue1;
-            }
+            comma.addEventListener('click', () => comma.setAttribute('disabled', 'true'));
+            displayValue1 += e.target.textContent;
+            displayScreen.textContent = displayValue1;
         }
 
         console.log(`DisplayValue1 = ${displayValue1}`);
@@ -87,7 +76,6 @@ operations.addEventListener('click', e => {
     //ako je veci od dva, kod ispod izracunava rezultat prethodna dva broja
     //i dodeljuje tu vrednost displayValue1 da se koristi za dalje racunanje
     operationsCount++;
-    clicked = true;
     if(operationsCount >= 2)
     {
         let result = operate(operatorChosen, displayValue1, displayValue2);
@@ -123,17 +111,19 @@ deleteDigit.addEventListener('click', () => {
     if(switchValue == false)
     {
         let current = displayValue1.toString().slice(0, -1);
-
+        
         displayValue1 = current;
         displayScreen.textContent = displayValue1;
+        if(!displayValue1.includes('.')) comma.removeAttribute('disabled');
         console.log(`current is ${current}`);
     }
     else
     { 
         let current = displayValue2.toString().slice(0, -1);
-
+        
         displayValue2 = current;
         displayScreen.textContent = displayValue2;
+        if(!displayValue1.includes('.')) comma.removeAttribute('disabled');
         console.log(`current is ${current}`);
     }
 });
