@@ -3,16 +3,16 @@ function add(x, y) {
 }
 
 function subtract(x, y) {
-    return x-y;
+    return parseFloat((x-y).toFixed(5));
 }
 
 function multiply(x, y) {
-    return x*y;
+    return parseFloat((x*y).toFixed(5));
 }
 
 function divide(x, y) {
     if(y==0) return `just don't`;
-    return (x/y).toFixed(4);
+    return parseFloat((x/y).toFixed(5));
 }
 
 //add function for percentages?
