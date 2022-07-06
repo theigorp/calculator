@@ -11,7 +11,7 @@ function multiply(x, y) {
 }
 
 function divide(x, y) {
-    if(y==0) return 'cannot divide with 0';
+    if(y==0) return `just don't`;
     return (x/y).toFixed(4);
 }
 
@@ -48,6 +48,7 @@ digits.addEventListener('click', e => {
     if(e.target.value == undefined) displayScreen.textContent = 0;
     else
     {
+        let commaCount = 0;
         if(switchValue==true)
         {
             displayValue2 += e.target.textContent;
@@ -55,8 +56,20 @@ digits.addEventListener('click', e => {
         }
         else 
         {
-            displayValue1 += e.target.textContent;
-            displayScreen.textContent = displayValue1;
+            if(commaCount == 1)
+            {
+                displayValue1 += e.target.textContent;
+                displayScreen.textContent = displayValue1;
+            }
+            else if(commaCount >=2)
+            {
+                displayScreen.textContent = 'error';
+            }
+            else 
+            {
+                displayValue1 += e.target.textContent;
+                displayScreen.textContent = displayValue1;
+            }
         }
 
         console.log(`DisplayValue1 = ${displayValue1}`);
@@ -69,11 +82,12 @@ operations.addEventListener('click', e => {
     operationsCount++;//count broji koliko puta se pritisnuo znak operacije
     //ako je veci od dva, kod ispod izracunava rezultat prethodna dva broja
     //i dodeljuje tu vrednost displayValue1 da se koristi za dalje racunanje
-    if(count >= 2)
+    if(operationsCount >= 2)
     {
         let result = operate(operatorChosen, displayValue1, displayValue2);
         console.log(`result is ${result}`);
         displayValue1 = result;
+        displayScreen.textContent = result;
     }
     switchValue = true;//kada se pritisne znak operacije prelazi se na dodeljivanje vrednosti displayValue2
     operatorChosen = e.target.textContent;
