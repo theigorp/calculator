@@ -32,3 +32,14 @@ function operate(operator, x, y){
             return 'try again';
     }
 }
+
+const digits = document.querySelector('.digits');
+const displayScreen = document.querySelector('.display-screen');
+
+let displayValue = 0;//stores current displayValue later used for calculating
+
+digits.addEventListener('click', e => {
+    displayScreen.textContent = e.target.textContent;
+    displayValue = e.target.textContent;
+    console.log(displayValue);
+});
