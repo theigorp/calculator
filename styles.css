@@ -21,8 +21,45 @@ body {
 .display-screen {
     border: 3px solid black;
     height: 30px;
-    width: 150px;
+    width: 99%;
     text-align: center;
     font-size: 22px;
 }
 
+.operations {
+    margin-top: 15px;
+    display: flex;
+    justify-content: space-between;
+}
+
+button {
+    height: 50px;
+    width: 75px;
+}
+
+.lower-part {
+    display: flex;
+    margin-top: 15px;
+}
+
+.digits {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+    gap: 15px;
+}
+
+.commands {
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+    margin-left: 20px;
+}
+
+#zero {
+    width: 170px;
+}
+
+#equals {
+    height: 120px;
+}
