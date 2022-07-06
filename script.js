@@ -41,7 +41,7 @@ const equals = document.querySelector('#equals');
 let displayValue1 = '';//stores current displayValue later used for calculating
 let displayValue2 = '';
 let operatorChosen;
-let count = 0;
+let operationsCount = 0;
 let switchValue = false;
 
 digits.addEventListener('click', e => {
@@ -66,7 +66,7 @@ digits.addEventListener('click', e => {
 
 operations.addEventListener('click', e => {
     if(e.target.value == undefined) return; //if area outside buttons is clicked - nothing is shown at console
-    count++;//count broji koliko puta se pritisnuo znak operacije
+    operationsCount++;//count broji koliko puta se pritisnuo znak operacije
     //ako je veci od dva, kod ispod izracunava rezultat prethodna dva broja
     //i dodeljuje tu vrednost displayValue1 da se koristi za dalje racunanje
     if(count >= 2)
