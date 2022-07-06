@@ -116,6 +116,7 @@ clear.addEventListener('click', () => {
     switchValue = false;
     operationsCount = 0;
     operatorChosen = '';
+    displayScreen.textContent = 0;
 });
 
 deleteDigit.addEventListener('click', () => {
