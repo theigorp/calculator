@@ -24,12 +24,12 @@ function operate(operator, x, y){
             return add(x,y);
         case '-':
             return subtract(x,y);
-        case '*' || 'X':
+        case 'X':
             return multiply(x,y);
         case '/':
             return divide(x,y);
         default:
-            return 'try again';
+            return 'error';
     }
 }
 
@@ -38,38 +38,52 @@ const displayScreen = document.querySelector('.display-screen');
 const operations = document.querySelector('.operations');
 const equals = document.querySelector('#equals');
 
-let displayValue1 = 0;//stores current displayValue later used for calculating
-let displayValue2 = 0;
+let displayValue1 = '';//stores current displayValue later used for calculating
+let displayValue2 = '';
 let operatorChosen;
-let digitClickCount = 0;
+let count = 0;
+let switchValue = false;
 
 digits.addEventListener('click', e => {
-    digitClickCount++;
+    if(e.target.value == undefined) displayScreen.textContent = 0;
+    else
+    {
+        if(switchValue==true)
+        {
+            displayValue2 += e.target.textContent;
+            displayScreen.textContent = displayValue2;
+        }
+        else 
+        {
+            displayValue1 += e.target.textContent;
+            displayScreen.textContent = displayValue1;
+        }
 
-    if(digitClickCount == 1)
-    {
-        displayScreen.textContent = e.target.textContent;
-        displayValue1 = e.target.textContent;
+        console.log(`DisplayValue1 = ${displayValue1}`);
+        console.log(`DisplayValue2 = ${displayValue2}`);
     }
-    else if(digitClickCount == 2)
-    {
-        displayScreen.textContent = e.target.textContent;
-        displayValue2 = e.target.textContent;
-        digitClickCount = 0;
-    }
-    
-    console.log(`DisplayValue1 = ${displayValue1}`);
-    console.log(`DisplayValue2 = ${displayValue2}`);
 });
 
 operations.addEventListener('click', e => {
+    if(e.target.value == undefined) return; //if area outside buttons is clicked - nothing is shown at console
+    count++;//count broji koliko puta se pritisnuo znak operacije
+    //ako je veci od dva, kod ispod izracunava rezultat prethodna dva broja
+    //i dodeljuje tu vrednost displayValue1 da se koristi za dalje racunanje
+    if(count >= 2)
+    {
+        let result = operate(operatorChosen, displayValue1, displayValue2);
+        console.log(`result is ${result}`);
+        displayValue1 = result;
+    }
+    switchValue = true;//kada se pritisne znak operacije prelazi se na dodeljivanje vrednosti displayValue2
     operatorChosen = e.target.textContent;
-    displayValue2 = 0;
+    displayValue2 = '';//resetuje vrednost nakon klika na znak operacije
     console.log(operatorChosen);
 });
 
 equals.addEventListener('click', () => {
-    console.log('click');
+    console.log(`operate(${operatorChosen}, ${displayValue1}, ${displayValue2})`);
     let result = operate(operatorChosen, displayValue1, displayValue2);
+    console.log(`result is ${result}`);
     displayScreen.textContent = result;
 });
