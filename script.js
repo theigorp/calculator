@@ -15,4 +15,20 @@ function divide(x, y) {
     return (x/y).toFixed(4);
 }
 
-console.log(divide(5,3));
+//add function for percentages?
+
+function operate(operator, x, y){
+    switch(operator)
+    {
+        case '+':
+            return add(x,y);
+        case '-':
+            return subtract(x,y);
+        case '*':
+            return multiply(x,y);
+        case '/':
+            return divide(x,y);
+        default:
+            return 'try again';
+    }
+}
