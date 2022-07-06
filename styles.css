@@ -11,9 +11,11 @@ body {
 }
 
 .calculator {
+    box-sizing: border-box;
     border: 2px solid red;
-    height: 500px;
-    width: 350px;
+    height: 600px;
+    width: 400px;
+    padding: 30px 20px;
 }
 
 .display-screen {
