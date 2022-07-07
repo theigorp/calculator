@@ -48,6 +48,12 @@ let operationsCount = 0;
 let switchValue = false;
 
 digits.addEventListener('click', e => {
+    //add clicking effect
+    e.target.style.boxShadow = 'inset 0 20px 8px -10px rgba(93, 80, 51, 0.6);';
+    e.target.style.filter= 'blur(2px)';
+    e.target.style.boxShadow = '';
+    e.target.style.filter = '';
+
     if(e.target.value == undefined) return;
     else
     {
