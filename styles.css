@@ -49,9 +49,13 @@ body {
 button {
     height: 50px;
     width: 75px;
-    /* background-color: #E6E1DA; */
-    /* border: none; */
-    box-shadow: rgba(50, 50, 93, 0.25) 0px 30px 60px -12px, rgba(0, 0, 0, 0.3) 0px 18px 36px -18px;
+    font-size: 20px;
+    background-color: #E6E1DA;
+    color: #6f6243;
+    border: 1px solid black;
+    box-shadow: inset 0 1px 0 0 #ffffff, inset 0 -3px 1px 0 rgba(93, 80, 51, 0.3), inset 0 -5px 10px 2px rgba(204, 196, 178, 0.8), inset 0 4px 6px 0 rgba(255,255,255,0.8), 0 -1px 0px 2px #CCC4B2, 0 1px 0px 2px rgba(255,255,255,0.7);
+    border-radius: 4px;
+    text-shadow: 0 1px 0 #ffffff, 0 -1px rgba(0,0,0,0.2);
 }
 
 .lower-part {
@@ -79,4 +83,15 @@ button {
 
 #equals {
     height: 120px;
+    color: #ffffff;
+  text-shadow: 0 1px rgba(255,255,255,0.2), 0 -1px rgba(164,27,21,0.8);
+  background: #FA4C07;
+  box-shadow: inset 0 1px 0 0 rgba(255,255,255,0.3), inset 0 -3px 1px 0 rgba(164,27,21,1), inset 0 -5px 10px 2px rgba(164, 27, 21, 0.5), inset 0 4px 6px 0 rgba(255,255,255,0.1), 0 -1px 0px 2px #CCC4B2, 0 1px 0px 2px rgba(255,255,255,0.7);
+}
+
+#clear, #delete {
+    background: #61655B; 
+    color: #ffffff;
+    text-shadow: 0 1px rgba(255,255,255,0.2), 0 -1px rgba(0,0,0,0.8);
+    box-shadow: inset 0 1px 0 0 rgba(255,255,255,0.3), inset 0 -3px 1px 0 rgba(0,0,0,0.3), inset 0 -5px 10px 2px rgba(0, 0, 0, 0.3), inset 0 4px 6px 0 rgba(255,255,255,0.1), 0 -1px 0px 2px #CCC4B2, 0 1px 0px 2px rgba(255,255,255,0.7);
 }
