@@ -1,4 +1,4 @@
-@import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;500;600;700;800&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;500;600;700;800&family=VT323&display=swap');
 
 body {
     font-family: 'Montserrat', sans-serif;
@@ -22,12 +22,13 @@ body {
 }
 
 .display-screen {
+    font-family: 'VT323', monospace;
     box-sizing: border-box;
     border: 3px solid black;
     height: 70px;
     width: 99%;
     text-align: end;
-    font-size: 34px;
+    font-size: 44px;
     padding: 10px 20px;
 }
 
