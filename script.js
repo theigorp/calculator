@@ -57,6 +57,8 @@ digits.addEventListener('click', e => {
     if(e.target.value == undefined) return;
     else
     {
+        playSound();
+
         if(switchValue==true)
         {
             comma.addEventListener('click', () => comma.setAttribute('disabled', 'true'));
@@ -81,6 +83,8 @@ operations.addEventListener('click', e => {
     //count broji koliko puta se pritisnuo znak operacije
     //ako je veci od dva, kod ispod izracunava rezultat prethodna dva broja
     //i dodeljuje tu vrednost displayValue1 da se koristi za dalje racunanje
+    playSound();
+
     operationsCount++;
     if(operationsCount >= 2)
     {
@@ -98,6 +102,7 @@ operations.addEventListener('click', e => {
 });
 
 equals.addEventListener('click', () => {
+    playSound();
     console.log(`operate(${operatorChosen}, ${displayValue1}, ${displayValue2})`);
     let result = operate(operatorChosen, displayValue1, displayValue2);
     console.log(`result is ${result}`);
@@ -105,6 +110,7 @@ equals.addEventListener('click', () => {
 });
 
 clear.addEventListener('click', () => {
+    playSound();
     displayValue1 = '';
     displayValue2 = '';
     switchValue = false;
@@ -114,6 +120,7 @@ clear.addEventListener('click', () => {
 });
 
 deleteDigit.addEventListener('click', () => {
+    playSound();
     if(switchValue == false)
     {
         let current = displayValue1.toString().slice(0, -1);
@@ -133,3 +140,10 @@ deleteDigit.addEventListener('click', () => {
         console.log(`current is ${current}`);
     }
 });
+
+function playSound()
+{
+    const audio = document.getElementById('audio');
+    audio.currentTime = 0;
+    audio.play();
+}
